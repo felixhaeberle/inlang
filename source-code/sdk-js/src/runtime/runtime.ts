@@ -3,8 +3,10 @@ import { BaseLookupFunctionArgs, createLookupFunction, LookupFunction } from "./
 
 const fallbackLookupFunction: LookupFunction = () => ""
 
+type MaybePromise<T> = T | Promise<T>
+
 export type RuntimeContext<Language extends string = string> = {
-	readResource: (language: Language) => Promise<Resource | undefined>
+	readResource: (language: Language) => MaybePromise<Resource | undefined>
 }
 
 export type RuntimeState<Language extends string = string> = {
